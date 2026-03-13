@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>User Management System</h1>
+    <button id="logoutBtn" onclick="logout()" style="display:none;">Logout</button>
+</header>
+
+<main class="container">
+
+    <!-- AUTH SECTION (shown when logged out) -->
+    <div id="authSection">
+
+        <!-- Login -->
+        <section>
+            <h2>Login</h2>
+            <input type="email" id="loginEmail" placeholder="Email">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <button onclick="login()">Login</button>
+            <p id="loginMessage" class="message"></p>
+            <p>Don't have an account? <a href="#" onclick="toggleAuth()">Register</a></p>
+        </section>
+
+        <!-- Register -->
+        <section id="registerSection" style="display:none;">
+            <h2>Register</h2>
+            <input type="text" id="registerName" placeholder="Full Name">
+            <input type="email" id="registerEmail" placeholder="Email">
+            <input type="password" id="registerPassword" placeholder="Password">
+            <button onclick="register()">Register</button>
+            <p id="registerMessage" class="message"></p>
+            <p>Already have an account? <a href="#" onclick="toggleAuth()">Login</a></p>
+        </section>
+
+    </div>
+
+    <!-- APP SECTION (shown when logged in) -->
+    <div id="appSection" style="display:none;">
+
+        <!-- Add User -->
+        <section>
+            <h2>Add New User</h2>
+            <form id="userForm">
+                <input type="text" id="name" placeholder="Enter name" required>
+                <input type="email" id="email" placeholder="Enter email" required>
+                <input type="password" id="password" placeholder="Enter password" required>
+                <button type="submit">Add User</button>
+            </form>
+            <p id="errorMessage" class="error"></p>
+            <p id="successMessage" class="success"></p>
+        </section>
+
+        <!-- Search -->
+        <section>
+            <h2>Search Users</h2>
+            <div style="display:flex; gap:10px;">
+                <input type="text" id="searchInput" placeholder="Search by name" style="flex:1;">
+                <button id="searchBtn">Search</button>
+            </div>
+        </section>
+
+        <!-- User List -->
+        <section>
+            <h2>Users List</h2>
+            <p id="loading" style="display:none;">Loading...</p>
+            <div id="usersList"></div>
+            <!-- Pagination -->
+            <div id="pagination" style="margin-top:15px; display:flex; gap:10px;"></div>
+        </section>
+
+    </div>
+
+</main>
+
+<footer style="text-align:center; padding:20px; color:#777;">
+    <p>REST API Project — Full Stack Internship Submission</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
